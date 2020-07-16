@@ -58,6 +58,7 @@ public class connectionClass extends com.jorgedress.loginmodule.register.mainFra
                 returned = resset.getString(1);
                 Result.setText("Sucessly registered. ID: " + returned);
                 Result.setForeground(Color.green);
+                jButton2.setText("Ok, exit");
             } else {
                 //System.out.println("Error");
                 returned = "Error";
