@@ -5,6 +5,7 @@
  */
 package com.jorgedress.loginmodule.register;
 
+import java.awt.Color;
 import java.sql.*;
 
 /**
@@ -24,14 +25,14 @@ public class connectionClass extends com.jorgedress.loginmodule.register.mainFra
             Class.forName("com.mysql.cj.jdbc.Driver"); 
             
             Connection con=DriverManager.getConnection(
-                    //fix : ?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC [root on Default schema]
+                    //timeZoneFix : ?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC [root on Default schema]
                     "jdbc:mysql://localhost:3306/login?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
                     "root",
                     ""
             );  
                  
             PreparedStatement prepStat;
-            prepStat = con.prepareStatement("INSERT INTO login VALUES (?, AES_ENCRYPT(?, 'djorgecryptKey'), ?)");
+            prepStat = con.prepareStatement("INSERT INTO login VALUES (?, AES_ENCRYPT(?, 'decryptKey'), ?)");
 
            
             prepStat.setString(1, name);
@@ -55,18 +56,21 @@ public class connectionClass extends com.jorgedress.loginmodule.register.mainFra
             if (resset.next()) {
                 //System.out.println(resset.getString(1));
                 returned = resset.getString(1);
-                Result.setText(returned);
+                Result.setText("Sucessly registered. ID: " + returned);
+                Result.setForeground(Color.green);
             } else {
                 //System.out.println("Error");
                 returned = "Error";
                 Result.setText("Error: can't get ID");
+                Result.setForeground(Color.green);
             }
             ID = returned;
             //end
             con.close();
             
         } catch (Exception e) { 
-            System.out.println(e);
+            System.out.println(e.getMessage());
+            System.out.println(e.getCause());
         }
         return ID;
     }   
