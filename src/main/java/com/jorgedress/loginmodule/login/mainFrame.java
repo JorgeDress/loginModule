@@ -14,10 +14,13 @@ import static com.jorgedress.loginmodule.login.connection.pwInput;
  *
  * @author jorge
  */
+
+
 public class mainFrame extends javax.swing.JFrame {
     static String nameInput;
     static char[] pwInput;
     static String decPw;
+    static boolean failed;
     /**
      * Creates new form mainFrame
      */
