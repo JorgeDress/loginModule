@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.sql.*;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import com.jorgedress.loginmodule.login.mainFrame;
 
 /**
  *
@@ -21,6 +22,7 @@ public class connection extends com.jorgedress.loginmodule.login.mainFrame {
     static String decPw;
     static String decServerPw;
     static String serverID;
+    private static boolean hasFailed;
 
     /**
      *
@@ -37,6 +39,7 @@ public class connection extends com.jorgedress.loginmodule.login.mainFrame {
     }
     
     public static void Connect(String name, String password, JLabel result, JLabel attemps) {
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             
@@ -68,13 +71,26 @@ public class connection extends com.jorgedress.loginmodule.login.mainFrame {
                     
                     
                 } else {
-                    int minusOne = Integer.parseInt(attemps.getText());
+                    int attempsNum;
+                    int minusOne = Integer.parseInt(attemps.getText())-1;
+                    attempsNum = Integer.parseInt(attemps.getText());
                     attemps.setText(String.valueOf(minusOne));
-                    result.setText("Wrong password, try again.");
-                    result.setForeground(Color.RED);
+                    if (attempsNum > 0 ) {
+                        result.setText("Wrong password, try again.");
+                        result.setForeground(Color.RED);
+                    } else if (attempsNum == 0) {
+                        JOptionPane.showMessageDialog(
+                                null, 
+                                "Too much incorrect attemps, try again later",
+                                "Attemps",
+                                JOptionPane.ERROR_MESSAGE
+                        );
+                        System.exit(0);
+                    }
                     
                 }
                 con.close();
+                
             }
             
             /*PreparedStatement prepStat;
