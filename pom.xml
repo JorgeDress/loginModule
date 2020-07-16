@@ -3,13 +3,33 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jorgedress</groupId>
     <artifactId>loginModule</artifactId>
-    <version>0.1.0-BETA</version>
+    <version>1.0.0-RELEASE</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.jorgedress.loginmodule.main.mainFrame</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
@@ -18,4 +38,7 @@
             <version>8.0.21</version>
         </dependency>
     </dependencies>
+    <distributionManagement>
+        <downloadUrl>http://mojo.codehaus.org/my-project</downloadUrl>
+    </distributionManagement>
 </project>
