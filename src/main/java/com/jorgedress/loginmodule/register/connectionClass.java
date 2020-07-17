@@ -28,8 +28,8 @@ public class connectionClass extends com.jorgedress.loginmodule.register.mainFra
             
             Connection con=DriverManager.getConnection(
                     //timeZoneFix : ?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC [root on Default schema]
-                    "jdbc:mysql://192.168.1.24:3306/login?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-                    "remote",
+                    "jdbc:mysql://localhost:3306/login?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+                    "root",
                     ""
             );  
             if (name.equals("")) {

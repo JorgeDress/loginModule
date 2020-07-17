@@ -195,3 +195,17 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtFieldName;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
+
+/*
+FOR THE POM:
+
+                                <transformers>
+                                    <transformer>
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                        <mainClass>com.jorgedress.loginModule.main.mainFrame</mainClass>
+                                    </transformer>
+                                </transformers>
+*/
