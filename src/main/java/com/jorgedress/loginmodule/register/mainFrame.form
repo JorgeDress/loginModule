@@ -58,7 +58,7 @@
                                   <Component id="txtFieldName" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="143" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -112,7 +112,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;&lt;p&gt;A good password contains:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;At least 8 characters&lt;/li&gt;&lt;li&gt;A number&lt;/li&gt;&lt;li&gt;A capital AND a lowcase letter.&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;&lt;p&gt;A good password contains:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;At least 8 characters&lt;/li&gt;&lt;li&gt;Not be the same as the username&lt;/li&gt;&lt;li&gt;A capital AND a lowcase letter.&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">

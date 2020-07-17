@@ -19,17 +19,64 @@ public class connectionClass extends com.jorgedress.loginmodule.register.mainFra
     
     public static String Connection(String name, String pw) {
         
-        //FIX CONNECTION HERE
+        //bool that test if it has almost one upperCaseLetter
+        boolean hasUpperCase = !pw.equals(pw.toLowerCase());
+        boolean hasLowerCase = !pw.equals(pw.toUpperCase());
         
         try {  
             Class.forName("com.mysql.cj.jdbc.Driver"); 
             
             Connection con=DriverManager.getConnection(
                     //timeZoneFix : ?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC [root on Default schema]
-                    "jdbc:mysql://localhost:3306/login?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-                    "root",
+                    "jdbc:mysql://192.168.1.24:3306/login?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+                    "remote",
                     ""
             );  
+            if (name.equals("")) {
+                Result.setText("Error: You must insert an username");
+                Result.setForeground(Color.RED);
+            } else if (pw.equals("") || pw.length() < 8 || !hasUpperCase || !hasLowerCase || pw.equals(name)) {
+                Result.setText("Error: You must insert a valid password");
+                Result.setForeground(Color.RED);
+            } else {
+                     
+            PreparedStatement prepStat;
+            prepStat = con.prepareStatement("INSERT INTO login VALUES (?, AES_ENCRYPT(?, 'decryptKey'), ?)");
+
+           
+            prepStat.setString(1, name);
+            prepStat.setString(2, pw);
+            prepStat.setString(3, "0");
+            
+            prepStat.executeUpdate();
+            
+            //now select the column to know the ID
+            
+            prepStat = con.prepareStatement("SELECT ID FROM login WHERE Name = ?;");
+                    
+            prepStat.setString(1, name);
+            
+            //write to resultSet
+            
+            ResultSet resset = prepStat.executeQuery();
+            //writeResultSet(resset);
+            String returned;
+            String ID;
+            if (resset.next()) {
+                //System.out.println(resset.getString(1));
+                returned = resset.getString(1);
+                Result.setText("Sucessly registered. ID: " + returned);
+                Result.setForeground(Color.green);
+                jButton2.setText("Ok, exit");
+            } else {
+                //System.out.println("Error");
+                returned = "Error";
+                Result.setText("Error: can't get ID");
+                Result.setForeground(Color.green);
+            }
+            ID = returned;
+            //end
+            }
                  
             PreparedStatement prepStat;
             prepStat = con.prepareStatement("INSERT INTO login VALUES (?, AES_ENCRYPT(?, 'decryptKey'), ?)");

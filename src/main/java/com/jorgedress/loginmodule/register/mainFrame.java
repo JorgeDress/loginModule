@@ -51,7 +51,7 @@ public class mainFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Password");
 
-        jLabel3.setText("<html><body><p>A good password contains:</p><ul><li>At least 8 characters</li><li>A number</li><li>A capital AND a lowcase letter.</li></ul></body></html>");
+        jLabel3.setText("<html><body><p>A good password contains:</p><ul><li>At least 8 characters</li><li>Not be the same as the username</li><li>A capital AND a lowcase letter.</li></ul></body></html>");
 
         jButton1.setText("Continue");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +90,7 @@ public class mainFrame extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(pwField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                                 .addComponent(txtFieldName, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(0, 143, Short.MAX_VALUE)))
+                        .addGap(0, 120, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
