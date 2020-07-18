@@ -69,6 +69,8 @@ public class connection extends com.jorgedress.loginmodule.login.mainFrame {
                     
                     result.setForeground(Color.GREEN);
                     
+                    //HERE TODO AFTER SUCESSFUL LOGIN
+                    
                     
                 } else {
                     int attempsNum;
