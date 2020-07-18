@@ -45,9 +45,9 @@ public class connection extends com.jorgedress.loginmodule.login.mainFrame {
             
             Connection con=DriverManager.getConnection(
                     //fix : ?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC [root on Default schema]
-                    "jdbc:mysql://localhost:3306/login?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-                    "root",
-                    ""
+                    "jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7355802",
+                    "sql7355802",
+                    "EZWxbHWSal"
             );
             
             CallableStatement csts = con.prepareCall("SELECT Name, AES_DECRYPT(Password, 'decryptKey'), ID FROM login WHERE Name = ?;");

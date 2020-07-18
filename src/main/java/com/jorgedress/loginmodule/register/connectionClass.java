@@ -28,9 +28,9 @@ public class connectionClass extends com.jorgedress.loginmodule.register.mainFra
             
             Connection con=DriverManager.getConnection(
                     //timeZoneFix : ?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC [root on Default schema]
-                    "jdbc:mysql://localhost:3306/login?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-                    "root",
-                    ""
+                    "jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7355802",
+                    "sql7355802",
+                    "EZWxbHWSal"
             );  
             if (name.equals("")) {
                 Result.setText("Error: You must insert an username");
