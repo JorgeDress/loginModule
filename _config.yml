@@ -1,1 +1,5 @@
 theme: jekyll-theme-minimal
+show_downloads: true
+title: "Login Module by JorgeDress"
+description: "A simple java program linked to a remote database that securely stores passwords and usernames"
+logo: /logo/logo.png
