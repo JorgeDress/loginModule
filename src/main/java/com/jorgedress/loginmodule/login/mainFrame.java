@@ -26,7 +26,7 @@ public class mainFrame extends javax.swing.JFrame {
      */
     public mainFrame() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
         nameInput = txtFieldName.getText();
         pwInput = pwField.getPassword();
         decPw = String.valueOf(pwInput);

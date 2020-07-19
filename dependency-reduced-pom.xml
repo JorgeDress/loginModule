@@ -3,7 +3,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.jorgedress</groupId>
   <artifactId>loginModule</artifactId>
-  <version>1.1.3-SNAPSHOT</version>
+  <name>Login Module</name>
+  <version>1.1.4-SNAPSHOT</version>
+  <description>Simple java module that allows to connect to a SQLdatabase and 
+securely save passwords and usernames.</description>
   <build>
     <plugins>
       <plugin>
@@ -53,8 +56,8 @@
     </repository>
   </distributionManagement>
   <properties>
-    <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 </project>

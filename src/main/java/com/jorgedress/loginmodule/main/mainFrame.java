@@ -15,6 +15,7 @@ public class mainFrame extends javax.swing.JFrame {
         super("Main Menu");
         initComponents();
         setContentPane(mainPanel);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -151,6 +152,7 @@ public class mainFrame extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
