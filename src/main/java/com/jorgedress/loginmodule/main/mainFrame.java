@@ -157,7 +157,7 @@ public class mainFrame extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        com.jorgedress.loginmodule.login.mainFrame.main(null);
+        com.jorgedress.loginmodule.login.MainFrame.main(null);
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -167,7 +167,7 @@ public class mainFrame extends javax.swing.JFrame {
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
-        com.jorgedress.loginmodule.register.mainFrame.main(null);
+        com.jorgedress.loginmodule.register.MainFrame.main(null);
     }//GEN-LAST:event_registerButtonActionPerformed
 
     /**

@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jorgedress</groupId>
     <artifactId>loginModule</artifactId>
-    <version>1.1.4-SNAPSHOT</version>
+    <version>1.2.1-RELEASE</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -79,7 +79,7 @@
         </dependency>
 
     </dependencies>
-    <name>Login Module</name>
-    <description>Simple java module that allows to connect to a SQLdatabase and 
+    <name>loginModule</name>
+    <description>Simple java module that allows to connect to a SQL database and 
 securely save passwords and usernames.</description>
 </project>

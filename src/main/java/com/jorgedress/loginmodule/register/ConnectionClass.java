@@ -1,0 +1,160 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.jorgedress.loginmodule.register;
+
+import java.awt.Color;
+import java.sql.*;
+
+/**
+ *
+ * @author jorge
+ */
+public class ConnectionClass extends com.jorgedress.loginmodule.register.MainFrame {
+    
+    String returned;
+    static String ID;
+    
+    public static String url = "jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7355802?zeroDateTimeBehavior=CONVERT_TO_NULL";
+    public static String userName = "sql7355802";
+    public static String serverPw = "EZWxbHWSal";
+    
+    public void setUrl(String newUrl) {
+        url = newUrl;
+    }
+    public void setUsername(String newUsername) {
+        userName = newUsername;
+    }
+    public void setPassword(String newPw) {
+        serverPw = newPw;
+    }
+    
+    public static String Connection(String name, String pw) {
+        
+        //bool that test if it has almost one upperCaseLetter
+        boolean hasUpperCase = !pw.equals(pw.toLowerCase());
+        boolean hasLowerCase = !pw.equals(pw.toUpperCase());
+        
+        try {  
+            Class.forName("com.mysql.cj.jdbc.Driver"); 
+            
+            Connection con=DriverManager.getConnection(
+                    //TimeZoneFix : ?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC [root on Default schema]
+                    url,
+                    userName,
+                    serverPw
+            );  
+            if (name.equals("")) {
+                Result.setText("Error: You must insert an username");
+                Result.setForeground(Color.RED);
+            } else if (pw.equals("") || pw.length() < 8 || !hasUpperCase || !hasLowerCase || pw.equals(name)) {
+                Result.setText("Error: You must insert a valid password");
+                Result.setForeground(Color.RED);
+            } else {
+                     
+            PreparedStatement prepStat;
+            prepStat = con.prepareStatement("INSERT INTO login VALUES (?, AES_ENCRYPT(?, 'decryptKey'), ?)");
+
+           
+            prepStat.setString(1, name);
+            prepStat.setString(2, pw);
+            prepStat.setString(3, "0");
+            
+            prepStat.executeUpdate();
+            
+            //now select the column to know the ID
+            
+            prepStat = con.prepareStatement("SELECT ID FROM login WHERE Name = ?;");
+                    
+            prepStat.setString(1, name);
+            
+            //write to resultSet
+            
+            ResultSet resset = prepStat.executeQuery();
+            //writeResultSet(resset);
+            String returned;
+            String ID;
+            if (resset.next()) {
+                //System.out.println(resset.getString(1));
+                returned = resset.getString(1);
+                Result.setText("Sucessly registered. ID: " + returned);
+                Result.setForeground(Color.green);
+                jButton2.setText("Ok, exit");
+            } else {
+                //System.out.println("Error");
+                returned = "Error";
+                Result.setText("Error: can't get ID");
+                Result.setForeground(Color.green);
+            }
+            ID = returned;
+            //end
+            }
+                 
+            PreparedStatement prepStat;
+            prepStat = con.prepareStatement("INSERT INTO login VALUES (?, AES_ENCRYPT(?, 'decryptKey'), ?)");
+
+           
+            prepStat.setString(1, name);
+            prepStat.setString(2, pw);
+            prepStat.setString(3, "0");
+            
+            prepStat.executeUpdate();
+            
+            //now select the column to know the ID
+            
+            prepStat = con.prepareStatement("SELECT ID FROM login WHERE Name = ?;");
+                    
+            prepStat.setString(1, name);
+            
+            //write to resultSet
+            
+            ResultSet resset = prepStat.executeQuery();
+            //writeResultSet(resset);
+            String returned;
+            String ID;
+            if (resset.next()) {
+                //System.out.println(resset.getString(1));
+                returned = resset.getString(1);
+                Result.setText("Sucessly registered. ID: " + returned);
+                Result.setForeground(Color.green);
+                jButton2.setText("Ok, exit");
+            } else {
+                //System.out.println("Error");
+                returned = "Error";
+                Result.setText("Error: can't get ID");
+                Result.setForeground(Color.green);
+            }
+            ID = returned;
+            //end
+            con.close();
+            
+        } catch (Exception e) { 
+            System.out.println(e.getMessage());
+            System.out.println(e.getCause());
+        }
+        return ID;
+    }   
+    
+    public static void main(String[] args) {
+        System.out.println(txtName.toString());
+        System.out.println(txtPassword.toString());
+        /*try {  
+            Class.forName("com.mysql.jdbc.Driver"); 
+            
+            Connection con=DriverManager.getConnection(
+                    //fix : ?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC [root on Default schema]
+                    "jdbc:mysql://localhost:3306/login",
+                    "root",
+                    ""
+            );  
+                
+            Statement statement=con.createStatement();  
+            ResultSet rs=statement.executeQuery("INSERT INTO login VALUES ('"
+                    + txtPassword + "', '" + "" +  "')"); 
+        } catch (Exception e) { 
+            System.out.println(e);
+        }   */
+    }
+}
